@@ -36,7 +36,7 @@
 
   <script>
     function logPress(buttonName) {
-      fetch('https://script.google.com/macros/s/AKfycbzkLuXO0ONLnP1bjwCh7auzNfkMAB-7mDn-T5NmCho9Ag4fZkPKnKsTlaxlPNNYeqbu/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbxr2wp7TwndbK05juzRtRWg9v4NRMMA5am9utA3m_Z0fjpQuMtf22SKPA2lWl0Fy-Cp/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -46,9 +46,9 @@
           timestamp: new Date().toISOString()
         })
       })
-      .then(response => response.text())  // Handle the response
+      .then(response => response.json())  // Change to .json() to parse the JSON response
       .then(data => console.log('Success:', data))
-      .catch(error => console.log('Error:', error));
+      .catch(error => console.error('Error:', error));
       
       alert(buttonName + ' pressed!');
     }
