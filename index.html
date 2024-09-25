@@ -1,38 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Button Logger</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f7f7f7;
-      flex-direction: column;
-    }
-    .button {
-      padding: 20px 40px;
-      font-size: 18px;
-      margin: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .button:hover {
-      background-color: #45a049;
-    }
-  </style>
 </head>
 <body>
-  <div>
-    <button class="button" onclick="logPress('Button 1')">Button 1</button>
-    <button class="button" onclick="logPress('Button 2')">Button 2</button>
-    <button class="button" onclick="logPress('Button 3')">Button 3</button>
-  </div>
+  <button onclick="logPress('Button 1')">Button 1</button>
+  <button onclick="logPress('Button 2')">Button 2</button>
+  <button onclick="logPress('Button 3')">Button 3</button>
 
   <script>
     function logPress(buttonName) {
@@ -46,7 +22,7 @@
           timestamp: new Date().toISOString()
         })
       })
-      .then(response => response.json())  // Change to .json() to parse the JSON response
+      .then(response => response.json())
       .then(data => console.log('Success:', data))
       .catch(error => console.error('Error:', error));
       
