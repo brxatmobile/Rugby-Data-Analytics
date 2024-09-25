@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Button Logger</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f7f7f7;
+      flex-direction: column;
+    }
+    .button {
+      padding: 20px 40px;
+      font-size: 18px;
+      margin: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <button class="button" onclick="logPress('Button 1')">Button 1</button>
+    <button class="button" onclick="logPress('Button 2')">Button 2</button>
+    <button class="button" onclick="logPress('Button 3')">Button 3</button>
+    <!-- Add as many buttons as needed -->
+  </div>
+
+  <script>
+    function logPress(buttonName) {
+      fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          button: buttonName,
+          timestamp: new Date().toISOString()
+        })
+      }).catch(error => console.log('Error:', error));
+      alert(buttonName + ' pressed!');
+    }
+  </script>
+</body>
+</html>
