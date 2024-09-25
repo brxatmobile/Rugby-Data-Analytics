@@ -32,14 +32,12 @@
     <button class="button" onclick="logPress('Button 1')">Button 1</button>
     <button class="button" onclick="logPress('Button 2')">Button 2</button>
     <button class="button" onclick="logPress('Button 3')">Button 3</button>
-    <!-- Add as many buttons as needed -->
   </div>
 
   <script>
     function logPress(buttonName) {
       fetch('https://script.google.com/macros/s/AKfycbzkLuXO0ONLnP1bjwCh7auzNfkMAB-7mDn-T5NmCho9Ag4fZkPKnKsTlaxlPNNYeqbu/exec', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -47,7 +45,11 @@
           button: buttonName,
           timestamp: new Date().toISOString()
         })
-      }).catch(error => console.log('Error:', error));
+      })
+      .then(response => response.text())  // Handle the response
+      .then(data => console.log('Success:', data))
+      .catch(error => console.log('Error:', error));
+      
       alert(buttonName + ' pressed!');
     }
   </script>
